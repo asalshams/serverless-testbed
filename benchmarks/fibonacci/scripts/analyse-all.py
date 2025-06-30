@@ -2,7 +2,7 @@ import pandas as pd
 import matplotlib.pyplot as plt
 
 # Load CSV
-df = pd.read_csv("benchmark-results.csv")
+df = pd.read_csv("results/benchmark-results.csv")
 
 # Ensure proper data types
 df['cpu'] = df['cpu'].astype(float)
@@ -18,7 +18,7 @@ plt.xlabel("CPU")
 plt.ylabel("Avg Latency (s)")
 plt.legend()
 plt.grid(True)
-plt.savefig("avg_latency_vs_cpu.png")
+plt.savefig("results/avg_latency_vs_cpu.png")
 
 # === 2. p95 and p99 Latency ===
 for p in ['p95', 'p99']:
@@ -31,7 +31,7 @@ for p in ['p95', 'p99']:
     plt.ylabel("Latency (s)")
     plt.legend()
     plt.grid(True)
-    plt.savefig(f"{p}_latency_vs_cpu.png")
+    plt.savefig(f"results/{p}_latency_vs_cpu.png")
 
 # === 3. Requests/sec per CPU (Efficiency) ===
 df['rps_per_cpu'] = df['requests_per_sec'] / df['cpu']
@@ -44,7 +44,7 @@ plt.xlabel("CPU")
 plt.ylabel("Requests/sec per CPU")
 plt.legend()
 plt.grid(True)
-plt.savefig("rps_per_cpu_vs_cpu.png")
+plt.savefig("results/rps_per_cpu_vs_cpu.png")
 
 # === 4. Optional: Save processed data with efficiency ===
-df.to_csv("results_with_efficiency.csv", index=False)
+df.to_csv("results/results_with_efficiency.csv", index=False)
