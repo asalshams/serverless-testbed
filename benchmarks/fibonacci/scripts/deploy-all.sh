@@ -1,13 +1,13 @@
 #!/bin/bash
 
 RUNTIMES=("python" "nodejs" "go")
-CPUS=("0.1" "0.2" "0.3" "0.4" "0.5" "0.6" "0.7" "0.8" "0.9" "1.0")
+CPUS=("0.1" "0.5" "1.0")
 DOCKER_USER="asalshams"
 
 for RUNTIME in "${RUNTIMES[@]}"; do
   for CPU in "${CPUS[@]}"; do
     CPU_NAME=$(echo $CPU | tr '.' '-')
-    TEMPLATE="benchmark-project/${RUNTIME}/knative/template.yaml"
+    TEMPLATE="fibonacci/${RUNTIME}/knative/template.yaml"
 
     cat $TEMPLATE | \
       sed "s/__RUNTIME__/${RUNTIME}/g" | \
